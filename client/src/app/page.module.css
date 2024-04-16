@@ -1,9 +1,15 @@
 
+
+
+/* Seção de registro */
+
 .section_register{
   display: flex;
   width: 100vw;
   height: 100vh;
+  margin-top: 20vh;
 }
+
 
 .section_register_left{
   flex: 1;
@@ -17,7 +23,6 @@
   
 }
 
-
 .section_register_right{
   flex: 1;
   /* background: rgb(0,196,204);
@@ -30,11 +35,333 @@
 }
 
 
+/* Seção home- temporario */
+
+.section_slogan{
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0,196,204);
+  background: linear-gradient(90deg, rgba(0,196,204,1) 21%, rgba(124,42,232,1) 78%);
+  position: relative;
+ 
+  display: flex;
+  flex-direction: column;
+  padding-top: 7vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slogan{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 70px;
+  margin-top: 30px;
+}
+
+.slogantext{
+  font-size: 7.2em;
+  color: aliceblue;
+ 
+}
+
+.slogan_subt{
+  font-size: 2.4em;
+  color: lightblue;
+}
+
+.downbtn {
+  border: unset;
+  background: #242424;
+  color: aliceblue;
+  padding: 15px;
+  font-size: 1.8em;
+  border-radius: 50%;
+  transition: 0.3s;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.downbtn:hover{
+  transform: scale(110%);
+  cursor: pointer;
+}
+
+.span1{
+  clip-path: circle(15% at 100% 50%);
+  background-color: #242424;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.span1:hover{
+  clip-path: circle(17% at 100% 50%);
+  cursor: pointer;
+  background-color: aliceblue;
+}
+
+.span1:hover .visitante{
+  color: #7c2ae8;
+}
+
+.visitante{
+  font-size: 3.6em;
+  line-height: 30px;
+  width: 50px;
+  color: aliceblue;
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+/* Section portfolio */
+
+.section_portfolio{
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+}
+
+.port_imagem{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 10%;
+}
+
+.port_content{
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-right: 10%;
+  gap: 5%;
+  margin-top: 5%;
+}
+
+.port_h1{
+  color: aliceblue;
+  font-size: 7.2em;
+  width: 80%;
+  line-height: 70px;
+}
+
+.port_destaque{
+  color: rgb(38, 198, 226);
+}
+
+.port_subt{
+  font-size: 2.4em;
+  color: aliceblue;
+}
+
+/* section ideas */
+
+.section_ideas{
+  height: 70vh;
+  display: flex;
+  width: 100vw;
+  flex-direction: row-reverse;
+}
+
+.ideas_imagem{
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 10%;
+}
+
+.ideas_content{
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-left: 10%;
+  gap: 5%;
+  margin-top: 5%;
+}
+
+.ideas_h1{
+  color: aliceblue;
+  font-size: 7.2em;
+  line-height: 70px;
+  width: 80%;
+}
+
+.ideas_destaque{
+  color: rgb(38, 82, 226);
+}
+
+.ideas_subt{
+  font-size: 2.4em;
+  color: aliceblue;
+  width: 80%;
+}
+
+
 @media screen and (max-width: 1199.98px) {
   .section_register {
     flex-direction: column;
     
   }
+
+  .downbtn {
+    margin-top: -30px;
+  }
+
+  .section_slogan{
+    font-size: 7px;
+    line-height: 50px;
+  }
+
+  .slogan {
+    margin-bottom: -50px;
+    padding: 5%;
+  }
+
+  .section_portfolio{
+    flex-direction: column;
+    height: 120vh;
+  }
+
+  .port_imagem{
+    justify-content: center;
+    padding: 10%;
+    transform: scale(80%);
+    margin-bottom: 20%;
+  }
+
+  .port_h1{
+    margin-bottom: 5%;
+  }
+
+  .port_content{
+    align-items: center;
+    padding: 10%;
+    margin-top: 0;
+    text-align: center;
+    margin-top: -50%;
+  }
+
+  .section_ideas{
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .ideas_imagem{
+    justify-content: center;
+    padding: 10%;
+    transform: scale(80%);
+    margin-bottom: 20%;
+  }
+
+  .ideas_content{
+    align-items: center;
+    padding: 10%;
+    margin-top: 0;
+    text-align: center;
+    margin-top: -50%;
+  }
+
+  .ideas_h1{
+    margin-bottom: 5%;
+  }
+
 }
 
+@media screen and (max-width: 600px) {
+  .span1{
+    display: none;
+  }
+
+  .visitante{
+    display: none;
+  }
+
+.section_slogan {
+  font-size: 5px;
+  line-height: 30px;
+}
+
+.slogan{
+  margin-top: 30%;
+}
+
+.downbtn{
+  margin-bottom: 30%;
+}
+
+.section_portfolio,
+.section_ideas{
+  font-size: 8px;
+  
+}
+
+.port_h1,
+.ideas_h1{
+  margin-bottom: 5%;
+  font-size: 5.4em;
+  line-height: 40px;
+}
+
+.port_imagem,
+.ideas_imagem{
+  transform: scale(55%);
+}
+
+.port_content,
+.ideas_content{
+  margin-top: -80%;
+}
+
+
+
+}
+
+
+
+
+
+@media screen and (max-height: 900px) {
+    .downbtn {
+      margin-top: 0px;
+    }
+
+}
+
+@media screen and (max-height: 800px) {
+  .section_slogan{
+    justify-content: center;
+  }
+
+  .slogan{
+    margin-top: 60%;
+    margin-bottom: -100px;
+  }
+
+  .downbtn{
+    margin-bottom: 50%;
+    margin-top: -30%;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Estilos para resoluções maiores ou iguais a 1200px (exemplo: desktops) */

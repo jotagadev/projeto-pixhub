@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    background: #242424;
+    padding: 0 10%;
+    width: 100vw;
+    height: 7vh;
+    position: fixed;
+    z-index: 999;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerlogo {
+    display: flex;
+    width: 300px;
+    
+    align-items: center;
+}
+
+.explorarbtn {
+   color: #2e2e2e;
+   font-size: 1.4em;
+   font-weight: 700;
+   background-color: aliceblue;
+   border-radius: 20px;
+   padding: 10px;
+   transition: 0.2s;
+}
+
+.explorarbtn:hover{
+    background: rgb(0, 197, 204);
+  background: linear-gradient(90deg, rgba(0, 197, 204, 0.705) 21%, rgba(124, 42, 232, 0.712) 78%);
+    color: aliceblue;
+}
+
+.loginbtn {
+    color: aliceblue;
+    font-size: 1.4em;
+    font-weight: 700;
+    background-color: #7c2ae8;
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.2s;
+ }
+ 
+ .loginbtn:hover{
+    background-color: #7c2ae8b9;;
+}
+
+.registerbtn {
+    color: #2e2e2e;
+    font-size: 1.4em;
+    font-weight: 700;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.2s;
+ }
+
+ .containerauth {
+    display: flex;
+    gap: 10px;
+    margin-right: 4%;
+    align-items: center;
+ }
+ 
+ .registerbtn:hover{
+    background-color: rgba(240, 248, 255, 0.781);
+    
+    color: #2e2e2e;
+ }
+
+ .menu{
+    color: white;
+    font-size: 2.4em;
+    cursor: pointer;
+    display: none;
+ }
+
+ .mobilenav{
+    position: absolute;
+    display: flex;
+    background-color: #242424;
+    right: 0;
+    flex-direction: column;
+    height: 100vh;
+    top: 100%;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+    transform: translateX(1000px);
+    transition: 0.5s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+ }
+
+ .mobilenav.show{
+    transform: translateX(0px);
+ }
+
+ .mobileauth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+ }
+
+@media screen and (max-width: 1000px) {
+    .explorarbtn{
+        display: none;
+    }
+
+    .containerauth{
+        display:none;
+    }
+
+    .menu{
+        display: block;
+        margin-right: 10%;
+    }
+
+    
+}

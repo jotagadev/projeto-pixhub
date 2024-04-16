@@ -33,7 +33,7 @@ export default function Register() {
         setLogin((prev) => !prev);
     }
 
-    console.log(login);
+    
 
   return (
     <div className={styles.container}>
