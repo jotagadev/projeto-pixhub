@@ -42,7 +42,7 @@ export default function Home() {
 
         <section className={styles.section_ideas}>
           <div className={styles.ideas_imagem}>
-            <Image alt="Homem vendo ideias" width={700} height={700} unoptimized src="/gif/ideas.gif"></Image>
+            <Image alt="Homem tendo ideias" width={700} height={700} unoptimized src="/gif/ideas.gif"></Image>
           </div>
           <div className={styles.ideas_content}>
             <h1 className={styles.ideas_h1}>
@@ -61,6 +61,9 @@ export default function Home() {
             <Register></Register>
           </div>
         </section>
+        <footer>
+
+        </footer>
       </main>
     </>
   );

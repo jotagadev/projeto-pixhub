@@ -37,8 +37,7 @@
     }
   }
   
-  /* Estilos para resoluções menores que 576px (exemplo: smartphones em modo retrato) */
-  @media (min-width: 450.01px) and (max-width: 575.98px) {
+  @media (min-width: 450.01px) and (max-width: 599px) {
     .section_register_left_h1{
       font-size: 4em;
       line-height: 40px;
@@ -50,8 +49,7 @@
     }
   }
   
-  /* Estilos para resoluções entre 576px e 767.98px (exemplo: smartphones em modo paisagem) */
-  @media (min-width: 576px) and (max-width: 767.98px) {
+  @media (min-width: 600px) and (max-width: 767.98px) {
     .section_register_left_h1{
       font-size: 6.4em;
       line-height: 50px;
@@ -63,8 +61,7 @@
     }
   }
   
-  /* Estilos para resoluções entre 768px e 991.98px (exemplo: tablets em modo retrato) */ 
-  
+
   
   @media (min-width: 768px) and (max-height: 1000px) {
     .section_register_left_h1{

@@ -1,13 +1,14 @@
 .container {
     display: flex;
     background: #242424;
-    padding: 0 10%;
+    padding: 10px 10%;
     width: 100vw;
     height: 7vh;
     position: fixed;
     z-index: 999;
     justify-content: space-between;
     align-items: center;
+    flex: 1;
 }
 
 .containerlogo {
@@ -83,7 +84,8 @@
     background-color: #242424;
     right: 0;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     top: 100%;
     width: 40%;
     justify-content: space-around;
@@ -111,6 +113,10 @@
 
     .containerauth{
         display:none;
+    }
+
+    .container{
+        padding: 30px 10%;
     }
 
     .menu{

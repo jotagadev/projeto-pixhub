@@ -1,8 +1,7 @@
 .container {
-    width: 80vw;
-    height:auto;
-    margin-right: 9%;
-    margin-top: -10px;
+    width: 200em;
+    align-self: center;
+    margin-right: 5em;
 }
 
 .imagem {
@@ -10,27 +9,31 @@
     border-radius: 20px;
 }
 
-@media screen and (max-width: 1550px){
+@media screen and (min-width: 1200px) {
     .container{
-        transform: scale(80%);
-        width: 120vw;
-        margin-right: 10%;
+        margin-right: 10em;
+        width: 100vw;
     }
-}
-
-@media screen and (max-width: 730px) {
-    .container{
-        transform: scale(60%);
-        margin-right: 30%;
-        width: 200vw;
-    }
-    
 }
 
 @media screen and (max-height: 900px) {
     .container{
-        margin-top: 0px;
+        transform: scale(80%);
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .container{
+        transform: scale(60%);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        transform: scale(42%);
+    }
+}
+
+
 
 
