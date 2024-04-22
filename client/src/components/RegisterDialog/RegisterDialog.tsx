@@ -1,14 +1,15 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RegisterLogo from "../Logo/RegisterLogo";
 import styles from "./registerdialog.module.css";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaLock, FaUser } from "react-icons/fa";
 
+
 type Props = {
     option : boolean;
-    closeDialog : (option: boolean) => void;
+    closeDialog : () => void;
 }
 
 export default function RegisterDialog({ option, closeDialog } : Props)  {
@@ -36,6 +37,9 @@ export default function RegisterDialog({ option, closeDialog } : Props)  {
         setLogin((prev) => !prev);
     }
 
+    useEffect(() => {
+      setLogin(option)
+    }, [option]);
     
 
   return (

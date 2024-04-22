@@ -21,28 +21,35 @@ export default function HomeNavbar() {
     if (!dialogRef.current) {
       return;
     }
-
+  
     setLoginOption(option);
-
+  
     setTimeout(() => {
-      dialogRef?.current.hasAttribute("open")
-        ? dialogRef?.current.close()
-        : dialogRef?.current.showModal();
+      if (dialogRef.current instanceof HTMLDialogElement) {
+        if (dialogRef.current.hasAttribute("open")) {
+          dialogRef.current.close();
+        } else {
+          dialogRef.current.showModal();
+        }
+      }
     }, 0);
   };
+  
 
-  const closeDialog = () => {
-    dialogRef?.current.close()
+const closeDialog = () => {
+  if (dialogRef.current) {
+    dialogRef.current.close();
   }
+};
 
   return (
     <>
-      <dialog className={styles.dialog} key={loginOption} ref={dialogRef}>
+      <dialog className={styles.dialog} ref={dialogRef}>
         <RegisterDialog option={loginOption} closeDialog={closeDialog}></RegisterDialog>
       </dialog>
       <header className={styles.container}>
         <Logo></Logo>
-        <Link className={styles.explorarbtn} href="/">
+        <Link className={styles.explorarbtn} href="/explorar">
           Explorar
         </Link>
 
@@ -89,4 +96,5 @@ export default function HomeNavbar() {
       </header>
     </>
   );
+
 }

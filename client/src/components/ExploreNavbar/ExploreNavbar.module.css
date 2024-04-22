@@ -11,6 +11,18 @@
     flex: 1;
 }
 
+.dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2e2e2e;
+    border-radius: 20px;
+    border: unset;
+    width: 50em;
+    height: 80em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
 .containerlogo {
     display: flex;
@@ -19,21 +31,52 @@
     align-items: center;
 }
 
-.explorarbtn {
+.search{
+    color: #2e2e2e;
+   font-size: 1.4em;
+   font-weight: 700;
+   background-color: aliceblue;
+   border-radius: 20px;
+   padding: 5px; 
+   transition: 0.2s;
+   border: unset;
+   display: flex;
+}
+
+.searchinput{
+    padding: 5px;
+    border: unset;
+    background-color: aliceblue;
+    border-radius: 10px;
+    min-width: 30em;
+    font-family: inherit;
+    font-size: 1.2em;
+}
+
+.searchinput:focus {
+    outline: none;
+}
+
+.searchbtn {
    color: #2e2e2e;
    font-size: 1.4em;
    font-weight: 700;
    background-color: aliceblue;
    border-radius: 20px;
-   padding: 10px;
+   
    transition: 0.2s;
+   border: unset;
+   cursor: pointer;
+   border-radius: 50%;
+   padding: 5px 5px 2px;
+
 }
 
-.explorarbtn:hover{
-    background: rgb(0, 197, 204);
-  background: linear-gradient(90deg, rgba(0, 197, 204, 0.705) 21%, rgba(124, 42, 232, 0.712) 78%);
+.searchbtn:hover{
+    background-color: #2e2e2e;
     color: aliceblue;
 }
+
 
 .loginbtn {
     color: aliceblue;
@@ -62,6 +105,7 @@
     transition: 0.2s;
     cursor: pointer;
     font-family: inherit;
+    border: unset;
  }
 
  .containerauth {
@@ -113,7 +157,7 @@
  }
 
 @media screen and (max-width: 1000px) {
-    .explorarbtn{
+    .searchbtn{
         display: none;
     }
 
@@ -129,6 +173,9 @@
         display: block;
         margin-right: 10%;
     }
-
+    
+    .dialog {
+        width: 80vw;
+    }
     
 }

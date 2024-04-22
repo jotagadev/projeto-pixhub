@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    padding-top: 7vh;
+    min-height: calc(100vh - 7vh);
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    padding: inherit 10em;
+}
+
+.slogan{
+    color: aliceblue;
+    font-size: 6.4em;
+    margin-top: 1em;
+}
+
+.cats{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    max-width: 74em;
+}
+
+.cat{
+    background-color: #2e2e2e;
+    color: aliceblue;
+    border: unset;
+    padding: 20px;
+    font-size: 2.4em;
+    font-family: inherit;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+    transition: 0.3s;
+    width: 10em;
+}
+
+.cat:hover{
+    background-color: #7c2ae8;
+    cursor: pointer;
+}

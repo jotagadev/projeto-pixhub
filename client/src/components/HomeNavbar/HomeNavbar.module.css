@@ -74,6 +74,7 @@
     transition: 0.2s;
     cursor: pointer;
     font-family: inherit;
+    border: unset;
  }
 
  .containerauth {
