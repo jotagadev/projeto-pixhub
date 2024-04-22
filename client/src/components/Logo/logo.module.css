@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
 
 .container{
     display: flex;
@@ -12,7 +12,7 @@
 
 .titulo1 {
     font-size: 64px;
-    font-family: "League Spartan", sans-serif;
+    
     font-size: 112px;
     color: white;
     text-shadow: 
@@ -25,7 +25,7 @@
 
 .titulo2 {
     font-size: 64px;
-    font-family: "League Spartan", sans-serif;
+   
     font-size: 112px;
     color: white;
     text-shadow: 
