@@ -1,0 +1,138 @@
+.container{
+    background-color: #2e2e2e;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    gap: 20px;
+    padding: 4.5em;
+    width: 50em;
+    z-index: 10;
+    height: inherit;
+    
+}
+
+.closebtn{
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    color: aliceblue;
+    border: unset;
+    background-color: transparent;
+    font-size: 3.2em;
+    padding: 0.2em 0.5em 0.4em ;
+    border-radius: 50%;
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.closebtn:hover{
+    background-color: #383838;
+    cursor: pointer;
+}
+
+.logo{
+    position: relative;
+    align-self: flex-start;
+}
+
+.span1{
+    color: #ab3dff;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.inputbox{
+    display: flex;
+    background-color: #242424;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.input{
+    border: unset;
+    background: transparent;
+    color: white;
+    padding: 10px;
+    font-size: 1.6em;
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.slogan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.inputicon{
+    color: #ab3dff;
+    font-size: 1.8em;
+}
+
+.titulo{
+    color: white;
+    font-size: 4.8em;
+    text-align: center;
+}
+
+.subtitulo{
+    color: lightgray;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.botao1{
+    border: unset;
+    background-color: #ab3dff;
+    color: white;
+    font-family: inherit;
+    padding: 10px;
+    font-size: 1.6em;
+    border-radius: 10px;
+    transition: 0.3s;
+    width: 250px;
+    margin-top: 10px;
+}
+
+.botao1:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+
+.pergunta1{
+    color: lightgray;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.switchlogin:hover {
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 1000px) {
+    .container{
+        width: 80vw;
+    }
+}
+

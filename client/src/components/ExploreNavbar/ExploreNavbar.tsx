@@ -11,7 +11,7 @@ import RegisterDialog from "../RegisterDialog/RegisterDialog";
 export default function HomeNavbar() {
   const [mobile, setMobile] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
-  const dialogRef = useRef <HTMLDialogElement | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const onClick = () => {
     setMobile((prev) => !prev);
@@ -31,14 +31,10 @@ export default function HomeNavbar() {
     }, 0);
   };
 
-  const closeDialog = () => {
-    dialogRef?.current.close()
-  }
-
   return (
     <>
       <dialog className={styles.dialog} key={loginOption} ref={dialogRef}>
-        <RegisterDialog option={loginOption} closeDialog={closeDialog}></RegisterDialog>
+        <RegisterDialog option={loginOption}></RegisterDialog>
       </dialog>
       <header className={styles.container}>
         <Logo></Logo>

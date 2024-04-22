@@ -5,12 +5,16 @@ import RegisterSlogan from "@/components/RegisterSlogan/RegisterSlogan";
 import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import { FaArrowDown } from "react-icons/fa";
 import Image from "next/image";
+import HomeFooter from "@/components/HomeFooter/HomeFooter";
 
 export default function Home() {
   return (
     <>
       <HomeNavbar></HomeNavbar>
       <main className={styles.container}>
+        <dialog>
+          <Register></Register>
+        </dialog>
         <section className={styles.section_slogan}>
           <div className={styles.slogan}>
             <h1 className={styles.slogantext}>
@@ -20,15 +24,17 @@ export default function Home() {
           </div>
 
           <HomeSlider></HomeSlider>
+          <a href="#portfolio">
           <button className={styles.downbtn}>
             <FaArrowDown></FaArrowDown>
           </button>
+          </a>
           <aside className={styles.span1}>
             <p className={styles.visitante}>entrar como visitante</p>
           </aside>
         </section>
 
-        <section className={styles.section_portfolio}>
+        <section id="portfolio" className={styles.section_portfolio}>
           <div className={styles.port_imagem}>
             <Image alt="Homem mexendo em arquivo" width={700} height={700} unoptimized src="/gif/research.gif"></Image>
           </div>
@@ -62,7 +68,7 @@ export default function Home() {
           </div>
         </section>
         <footer>
-
+          <HomeFooter></HomeFooter>
         </footer>
       </main>
     </>

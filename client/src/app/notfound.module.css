@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo{
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+    padding: 1em;
+}
+
+.content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5em;
+}
+
+.contenth1{
+    color: aliceblue;
+    font-size: 7.2em;
+    line-height: 62px;
+    width: 4em;
+    border-left: 1px solid;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    
+}
+
+.destaque{
+    color: #ab3dff;
+}
+
+.backbtn{
+    border: unset;
+    font-size: 2.4em;
+    font-family: inherit;
+    align-self: flex-start;
+    padding: 0.5em;
+    margin-left: 2em;
+    background-color: aliceblue;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.backbtn:hover{
+    background-color: rgba(240, 248, 255, 0.664);
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.753);
+}

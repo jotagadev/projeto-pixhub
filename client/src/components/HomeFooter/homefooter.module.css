@@ -1,0 +1,54 @@
+.container {
+    min-height: 20vh;
+    width: 100vw;
+    background-color: #2e2e2e;
+    display: flex;
+    padding: 5em 15%;
+    align-items: center;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    z-index: 2;
+    justify-content: space-between;
+    margin-top: 10em;
+}
+
+.logo{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 5em;
+    
+}
+
+.tecno{
+    display: flex;
+    align-items: center;
+}
+
+.madeby{
+    
+    font-size: 1.4em;
+    color: aliceblue;
+    max-width: 30em;
+    text-align: justify;
+}
+
+.logotecno{
+    transform: scale(60%);
+    
+}
+
+@media screen and (max-width: 1250px) {
+    .container{
+        flex-direction: column;
+    }
+
+    .logo{
+        margin-left: -5em;
+    }
+
+    .logotecno{
+        transform: scale(50%);
+    }
+
+    
+}
