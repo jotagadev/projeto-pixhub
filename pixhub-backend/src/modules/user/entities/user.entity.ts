@@ -16,7 +16,7 @@ export class User {
   name: string;
 
   @Column({
-    name: 'name',
+    name: 'email',
     type: 'varchar',
     length: 255,
     nullable: false,
@@ -25,7 +25,7 @@ export class User {
   email: string;
 
   @Column({
-    name: 'name',
+    name: 'password',
     type: 'varchar',
     length: 255,
     nullable: false,
@@ -34,6 +34,5 @@ export class User {
   password: string;
 
   @OneToMany(() => Photo, (photo) => photo.user, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'user_id' })
   photos: Photo[];
 }

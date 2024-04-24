@@ -9,11 +9,14 @@ export class Photo {
   @Column({ type: 'varchar', length: 255, name: 'title', nullable: false })
   title: string;
 
-  @Column({ type: 'datetime', length: 255, name: 'date', nullable: false })
+  @Column({ type: 'datetime', name: 'date', nullable: false })
   postDate: Date;
 
   @Column({ type: 'text', name: 'photoURL', nullable: false })
   photoURL: string;
+
+  @Column({ type: 'text', name: 'description', nullable: false })
+  description: string;
 
   @Column({ type: 'varchar', length: 50, name: 'category', nullable: false })
   category: string;
