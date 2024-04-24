@@ -14,6 +14,9 @@ export class CreatePhotoDto {
   @IsString({ message: 'URL deve ser uma string.' })
   photoURL: string;
 
+  @IsString({ message: 'Descrição deve ser uma string.' })
+  description: string;
+
   @IsString({ message: 'Categoria deve ser uma string.' })
   @IsNotEmpty({ message: 'Categoria é obrigatório.' })
   @IsEnum(Category)
