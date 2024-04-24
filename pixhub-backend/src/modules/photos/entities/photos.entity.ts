@@ -15,6 +15,9 @@ export class Photo {
   @Column({ type: 'text', name: 'photoURL', nullable: false })
   photoURL: string;
 
+  @Column({ type: 'text', name: 'description', nullable: false })
+  description: string;
+
   @Column({ type: 'varchar', length: 50, name: 'category', nullable: false })
   category: string;
 
