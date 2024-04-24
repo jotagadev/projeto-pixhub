@@ -8,7 +8,7 @@ import { FaX } from "react-icons/fa6";
 import { useRef, useState } from "react";
 import RegisterDialog from "../RegisterDialog/RegisterDialog";
 import { SlMagnifier } from "react-icons/sl";
-
+import { useParams, usePathname } from "next/navigation";
 
 //TODO - GERENCIAMENTO DE ESTADO DE LOGGED IN
 
@@ -16,7 +16,11 @@ export default function ExploreNavbar() {
   const [mobile, setMobile] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
   const [search, setSearch] = useState(""); // ESTADO DA PESQUISA - TODO
-  const dialogRef = useRef <HTMLDialogElement | null>(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  const pathname = usePathname();
+  const explorarAtivo = pathname.endsWith("/explorar");
+  const criarAtivo = pathname.endsWith("/criar");
 
   const onClick = () => {
     setMobile((prev) => !prev);
@@ -26,9 +30,9 @@ export default function ExploreNavbar() {
     if (!dialogRef.current) {
       return;
     }
-  
+
     setLoginOption(option);
-  
+
     setTimeout(() => {
       if (dialogRef.current instanceof HTMLDialogElement) {
         if (dialogRef.current.hasAttribute("open")) {
@@ -39,28 +43,53 @@ export default function ExploreNavbar() {
       }
     }, 0);
   };
-  
 
-const closeDialog = () => {
-  if (dialogRef.current) {
-    dialogRef.current.close();
-  }
-};
-
+  const closeDialog = () => {
+    if (dialogRef.current) {
+      dialogRef.current.close();
+    }
+  };
 
   return (
     <>
       <dialog className={styles.dialog} ref={dialogRef}>
-        <RegisterDialog option={loginOption} closeDialog={closeDialog}></RegisterDialog>
+        <RegisterDialog
+          option={loginOption}
+          closeDialog={closeDialog}
+        ></RegisterDialog>
       </dialog>
       <header className={styles.container}>
-        <Logo></Logo>
-        <div className={styles.search}>
-          <input placeholder="Explorar" onChange={(e) => setSearch(e.target.value)} className={styles.searchinput}></input>
-        <button className={styles.searchbtn}>
-        <SlMagnifier />
-        </button>
+        <div className={styles.logoelinks}>
+          <Link href="/explorar">
+            <Logo></Logo>
+          </Link>
+          <Link
+            className={`${styles.navbtn} ${
+              explorarAtivo && styles.navbtnselected
+            }`}
+            href="/explorar"
+          >
+            Página inicial
+          </Link>
+          <Link
+            className={`${styles.navbtn} ${
+              criarAtivo && styles.navbtnselected
+            }`}
+            href="/explorar/criar"
+          >
+            Criar
+          </Link>
         </div>
+        {!criarAtivo && <div className={styles.search}>
+          <input
+            placeholder="Pesquisar"
+            onChange={(e) => setSearch(e.target.value)}
+            className={styles.searchinput}
+          ></input>
+          <button className={styles.searchbtn}>
+            <SlMagnifier />
+          </button>
+        </div>}
 
         <div className={styles.containerauth}>
           <button
@@ -71,7 +100,7 @@ const closeDialog = () => {
           </button>
           <button
             className={styles.registerbtn}
-            onClick={() => toggleDialog(false)} 
+            onClick={() => toggleDialog(false)}
           >
             Registrar-se
           </button>
@@ -90,13 +119,13 @@ const closeDialog = () => {
           <div className={styles.mobileauth}>
             <button
               className={styles.loginbtn}
-              onClick={() => toggleDialog(true)} 
+              onClick={() => toggleDialog(true)}
             >
               Login
             </button>
             <button
               className={styles.registerbtn}
-              onClick={() => toggleDialog(false)} 
+              onClick={() => toggleDialog(false)}
             >
               Registrar-se
             </button>
@@ -105,5 +134,4 @@ const closeDialog = () => {
       </header>
     </>
   );
-
 }

@@ -75,7 +75,7 @@ const closeDialog = () => {
             mobile ? `${styles.mobilenav} ${styles.show}` : styles.mobilenav
           }
         >
-          <Link className={styles.registerbtn} href="/">
+          <Link className={styles.registerbtn} href="/explorar">
             Explorar
           </Link>
           <div className={styles.mobileauth}>

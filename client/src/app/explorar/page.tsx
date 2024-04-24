@@ -1,4 +1,3 @@
-
 import PhotosGallery from "@/components/PhotosGallery/PhotosGallery";
 import styles from "./page.module.css";
 import { FaPaintBrush, FaBuilding } from "react-icons/fa";
@@ -9,14 +8,17 @@ import { SiRetroarch } from "react-icons/si";
 
 export default function Explorar() {
 
+
   return (
     <div className={styles.container}>
       <h1 className={styles.slogan}>Explore novos horizontes</h1>
       <div className={styles.cats}>
+        
         <button className={styles.cat}>
           <FaPaintBrush />
           Arte
         </button>
+        
         <button className={styles.cat}>
           <FaSun />
           Natureza

@@ -1,0 +1,102 @@
+.container {
+    min-height: 100vh;
+    width: 100vw;
+    padding-top: 7vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10em 40em;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2e2e2e;
+    border-top: 1px solid #2e2e2e;
+    padding: 1em;
+}
+
+.titulo{
+    font-size: 4.8em;
+    color: aliceblue;
+}
+
+.publicarbtn{
+    border: unset;
+    font-family: inherit;
+    color: aliceblue;
+    background-color: #7c2ae8;
+    padding: 20px;
+    font-size: 1.6em;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+.publicarbtn:hover{
+    background-color: #7c2ae8bb;
+    cursor: pointer;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    
+}
+
+.input{
+    display: none;
+}
+
+.imagem{
+    flex: 1;
+}
+
+.info{
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.selecionar{
+    background-color: #424242;
+    font-size: 2.4em;
+    color: aliceblue;
+    padding: 5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.inputbox{
+    display: flex;
+    flex-direction: column;
+    max-width: 40em;
+    gap: 0.5em;
+}
+
+.inputlabel{
+    color: aliceblue;
+    font-size: 1.8em;
+}
+
+.inputcontent{
+    border: unset;
+    background-color: #2e2e2e;
+    font-family: inherit;
+    padding: 10px;
+    font-size: 2.4em;
+    border-radius: 10px;
+    color: aliceblue;
+    max-width: 40em;
+    resize: none;
+}
+
+.select{
+    cursor: pointer;
+}
+
+.select:hover{
+    background-color: #2e2e2e;
+}

@@ -1,7 +1,7 @@
 .container {
     display: flex;
     background: #242424;
-    padding: 10px 10%;
+    padding: 10px 15%;
     width: 100vw;
     height: 7vh;
     position: fixed;
@@ -9,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     flex: 1;
+    gap: 0.5em;
 }
 
 .dialog{
@@ -31,6 +32,41 @@
     align-items: center;
 }
 
+.logoelinks{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.navbtn{
+    color: #2e2e2e;
+    font-size: 1.4em;
+    font-weight: 700;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 13px;
+    transition: 0.2s;
+    cursor: pointer;
+    font-family: inherit;
+    border: unset;
+}
+
+.navbtn:hover{
+    background-color: #7c2ae8;
+    color: aliceblue;
+}
+
+.navbtn:active{
+    transform: scale(90%);
+}
+
+.navbtnselected {
+    background-color: #7c2ae8;
+    color: aliceblue;
+    transition: 0.3s;
+}
+
 .search{
     color: #2e2e2e;
    font-size: 1.4em;
@@ -41,6 +77,9 @@
    transition: 0.2s;
    border: unset;
    display: flex;
+   flex-grow: 1;
+    max-width: 30em;
+   /* margin-left: 3em; */
 }
 
 .searchinput{
@@ -48,9 +87,10 @@
     border: unset;
     background-color: aliceblue;
     border-radius: 10px;
-    min-width: 30em;
+    flex-grow: 1;
     font-family: inherit;
     font-size: 1.2em;
+    
 }
 
 .searchinput:focus {
@@ -63,7 +103,6 @@
    font-weight: 700;
    background-color: aliceblue;
    border-radius: 20px;
-   
    transition: 0.2s;
    border: unset;
    cursor: pointer;
@@ -73,7 +112,7 @@
 }
 
 .searchbtn:hover{
-    background-color: #2e2e2e;
+    background-color: #7c2ae8;
     color: aliceblue;
 }
 
@@ -111,7 +150,7 @@
  .containerauth {
     display: flex;
     gap: 10px;
-    margin-right: 4%;
+    margin-right: 6%;
     align-items: center;
  }
  

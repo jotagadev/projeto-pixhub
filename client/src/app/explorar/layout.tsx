@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ExploreNavbar from "@/components/ExploreNavbar/ExploreNavbar";
+import HomeFooter from "@/components/HomeFooter/HomeFooter";
 
 //TODO - FOOTER
 
@@ -17,7 +18,7 @@ export default function RootLayout({
     <>
       <ExploreNavbar />
         {children}
-      <footer></footer>
+      <HomeFooter></HomeFooter>
     </>
   );
 }

@@ -1,7 +1,7 @@
 .container {
     display: flex;
     background: #242424;
-    padding: 10px 10%;
+    padding: 10px 15%;
     width: 100vw;
     height: 7vh;
     position: fixed;
