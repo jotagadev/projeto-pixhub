@@ -19,13 +19,11 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('user')
-  @UseGuards(AuthGuard)
   async create(@Body() createUserDto: CreateUserDto) {
     return await this.userService.create(createUserDto);
   }
 
   @Get('users')
-  @UseGuards(AuthGuard)
   async findAll() {
     return await this.userService.findAll();
   }

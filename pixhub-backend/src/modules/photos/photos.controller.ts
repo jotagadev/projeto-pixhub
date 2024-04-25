@@ -26,7 +26,6 @@ import { AuthGuard } from 'src/common/guard/auth.guard';
 import { Category } from 'src/common/enum/Category.enum';
 
 @Controller('api')
-@UseGuards(AuthGuard)
 export class PhotosController {
   constructor(private readonly photosService: PhotosService) {}
 
@@ -36,6 +35,7 @@ export class PhotosController {
   }
   SERVER_URL: string = 'http://localhost:3333/';
   @Post('upload')
+  @UseGuards(AuthGuard)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -109,6 +109,7 @@ export class PhotosController {
   }
 
   @Patch('photo/:id')
+  @UseGuards(AuthGuard)
   async update(
     @Param('id') id: string,
     @Body() updatePhotoDto: UpdatePhotoDto,
@@ -117,6 +118,7 @@ export class PhotosController {
   }
 
   @Delete('photo/:id')
+  @UseGuards(AuthGuard)
   async remove(@Param('id') id: string) {
     const photo = await this.photosService.findOne(+id);
     if (!photo) {

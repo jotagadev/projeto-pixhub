@@ -7,8 +7,7 @@ export class CreatePhotoDto {
   @IsNotEmpty({ message: 'Título é obrigatório.' })
   title: string;
 
-  @IsDateString({}, { message: 'Título deve ser uma string.' })
-  @IsNotEmpty({ message: 'Título é obrigatório.' })
+  @IsNotEmpty({ message: 'Data é obrigatório.' })
   postDate: Date;
 
   @IsString({ message: 'URL deve ser uma string.' })
