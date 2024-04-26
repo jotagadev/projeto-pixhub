@@ -4,7 +4,7 @@
     padding-top: 7vh;
     display: flex;
     flex-direction: column;
-    padding: 10em 40em;
+    padding: 10em 20%;
 }
 
 .header{
@@ -19,6 +19,7 @@
 .titulo{
     font-size: 4.8em;
     color: aliceblue;
+    text-align: center;
 }
 
 .publicarbtn{
@@ -37,6 +38,23 @@
     cursor: pointer;
 }
 
+.mobilepublicarbtn{
+    border: unset;
+    font-family: inherit;
+    color: aliceblue;
+    background-color: #7c2ae8;
+    padding: 20px;
+    font-size: 1.6em;
+    border-radius: 10px;
+    font-weight: 900;
+    display: none;
+}
+
+.mobilepublicarbtn:hover{
+    background-color: #7c2ae8bb;
+    cursor: pointer;
+}
+
 .content{
     display: flex;
     align-items: center;
@@ -49,7 +67,10 @@
 }
 
 .imagem{
+    display: flex;
+    align-items: center;
     flex: 1;
+    margin: 2em;
 }
 
 .info{
@@ -62,17 +83,20 @@
 
 .selecionar{
     background-color: #424242;
-    font-size: 2.4em;
+    font-size:  2.4em;
     color: aliceblue;
     padding: 5em;
     border-radius: 10px;
     cursor: pointer;
+   display: flex;
+   
+    text-align: center;
+   
 }
 
 .inputbox{
     display: flex;
     flex-direction: column;
-    max-width: 40em;
     gap: 0.5em;
 }
 
@@ -99,4 +123,28 @@
 
 .select:hover{
     background-color: #2e2e2e;
+}
+
+@media screen and (max-width: 1200px) {
+    .content{
+        flex-direction: column-reverse;
+        padding: 5em;
+    }
+    .selecionar{
+        font-size: 3vw;
+    }
+
+    .publicarbtn{
+        display: none;
+    }
+
+    .mobilepublicarbtn{
+        display:block;
+    }
+}
+
+@media screen and (max-width: 842px) {
+    .selecionar{
+        font-size: 3vw;
+    }
 }

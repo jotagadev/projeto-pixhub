@@ -12,6 +12,7 @@
     color: aliceblue;
     font-size: 6.4em;
     margin-top: 1em;
+    text-align: center;
 }
 
 .cats{
@@ -19,11 +20,12 @@
     flex-wrap: wrap;
     gap: 1em;
     max-width: 74em;
+    justify-content: center;
 }
 
 .cat{
     background-color: #2e2e2e;
-    color: aliceblue;
+    color: #7c2ae8;
     border: unset;
     padding: 20px;
     font-size: 2.4em;
@@ -39,7 +41,30 @@
     width: 10em;
 }
 
+.cat p {
+    color: aliceblue;
+}
+
 .cat:hover{
     background-color: #7c2ae8;
+    color: aliceblue;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .container{
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+       font-size: 6px;
+       padding: 5em;
+    }
+
+    .cat{
+        padding: 15px;
+    }
+
 }

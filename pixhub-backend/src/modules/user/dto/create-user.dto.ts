@@ -16,10 +16,10 @@ export class CreateUserDto {
   email: string;
 
   @IsString({ message: 'Senha deve ser uma string.' })
-  @IsStrongPassword(
-    { minLength: 8 },
-    { message: 'Senha deve ter no mínimo 8 caracteres' },
-  )
+  // @IsStrongPassword(
+  //   { minLength: 8 },
+  //   { message: 'Senha deve ter no mínimo 8 caracteres' },
+  // ) ESTAVA BUGADO - TODO
   @IsNotEmpty({ message: 'Senha é obrigatória.' })
   password: string;
 }

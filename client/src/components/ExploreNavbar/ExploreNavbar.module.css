@@ -1,7 +1,7 @@
 .container {
     display: flex;
     background: #242424;
-    padding: 10px 15%;
+    padding: 30px 15%;
     width: 100vw;
     height: 7vh;
     position: fixed;
@@ -78,9 +78,21 @@
    border: unset;
    display: flex;
    flex-grow: 1;
-    max-width: 30em;
+    max-width: 40em;
+    margin: 0 5%;
+    margin-right: 9%;
    /* margin-left: 3em; */
 }
+
+.searchmobile{
+    display: flex;
+    font-size: 1.2em;
+    padding: 5px; 
+    background-color: aliceblue;
+    border-radius: 20px;
+    border: unset;
+}
+
 
 .searchinput{
     padding: 5px;
@@ -177,7 +189,7 @@
     max-height: 100vh;
     top: 100%;
     width: 40%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     transform: translateX(1000px);
     transition: 0.5s ease-out;
@@ -188,6 +200,13 @@
     transform: translateX(0px);
  }
 
+ .mobilenavlinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+ }
+
  .mobileauth{
     display: flex;
     flex-direction: column;
@@ -195,9 +214,78 @@
     gap: 10px;
  }
 
-@media screen and (max-width: 1000px) {
-    .searchbtn{
-        display: none;
+ .containerperfil{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-right: 5%;
+ }
+
+ .perfil{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+ }
+
+ .avatarimg{
+    border-radius: 50%;
+    width: 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+ }
+
+ .dropicon{
+    color: aliceblue;
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: 0.5s;
+ }
+
+ .dropiconshow{
+    rotate: calc(180deg);
+ }
+
+ .dropdowncontainer{
+    position: absolute;
+    top: -20em;
+    left: -1.5em;
+    transition: 0.2s;
+    opacity: 0;
+ }
+
+ .dropdownmenu{
+    list-style: none;
+    color: aliceblue;
+    font-size: 1.6em;
+    background-color: #2e2e2e;
+    padding: 1em;
+    border-radius: 20px;
+    line-height: 1.8em;
+    font-weight: 500;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    
+ }
+
+ .dropdownmenu li:hover{
+    color:#7c2ae8;
+    cursor: pointer;
+ }
+
+ .dropshow{
+    top: 5.5em;
+    opacity: 1;
+ }
+
+@media screen and (max-width: 1200px) {
+    .logoelinks{
+        order: 1;
+    }
+
+    .containerperfil{
+        order: 2;
+    }
+
+    .menu{
+        order: 3;
     }
 
     .containerauth{
@@ -211,10 +299,39 @@
     .menu{
         display: block;
         margin-right: 10%;
+        font-size: 2.4em;
+        margin-top: 0.3em;
     }
     
     .dialog {
         width: 80vw;
     }
+
+    .logoelinks .navbtn{
+        display: none;
+    }
+
+    .search{
+        display: none;
+    }
     
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        padding: 30px 5%;
+        gap: 1em;
+    }
+
+    .logoelinks{
+        margin-left: -5%;
+    }
+
+    .containerperfil{
+        margin-left: -9%;
+    }
+
+    .searchmobile{
+        font-size: 0.75em;
+    }
 }
