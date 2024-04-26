@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from '../config/database.config';
+import { AuthModule } from './modules/auth/auth.module';
 import { PhotosModule } from './modules/photos/photos.module';
 import { ConfigModule } from '@nestjs/config';
 import * as cors from 'cors';
@@ -11,6 +12,7 @@ import * as cors from 'cors';
 @Module({
   imports: [
     TypeOrmModule.forRoot(config),
+    AuthModule,
     UserModule,
     PhotosModule,
     ConfigModule.forRoot({
