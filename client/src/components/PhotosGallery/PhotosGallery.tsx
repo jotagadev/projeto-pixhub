@@ -9,13 +9,17 @@ type Photo = {
     title: string,
 }
 
-export default function PhotosGallery() {
+type Props = {
+  api: string,
+}
+
+export default function PhotosGallery({api} : Props) {
   const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+        const response = await fetch(api);
         if (!response.ok) {
           throw new Error("Erro ao buscar os dados das fotos");
         }

@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <>
       <ExploreNavbar />
+  
         {children}
+      
       <HomeFooter></HomeFooter>
     </>
   );

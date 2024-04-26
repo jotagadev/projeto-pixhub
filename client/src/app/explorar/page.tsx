@@ -8,6 +8,7 @@ import { SiRetroarch } from "react-icons/si";
 
 export default function Explorar() {
 
+  const api = "https://jsonplaceholder.typicode.com/photos"
 
   return (
     <div className={styles.container}>
@@ -16,31 +17,31 @@ export default function Explorar() {
         
         <button className={styles.cat}>
           <FaPaintBrush />
-          Arte
+          <p>Arte</p>
         </button>
         
         <button className={styles.cat}>
           <FaSun />
-          Natureza
+          <p>Natureza</p>
         </button>
         <button className={styles.cat}>
           <FaBuilding />
-          Urbano
+          <p>Urbano</p>
         </button>
         <button className={styles.cat}>
           <PiSwordDuotone />
-          Anime
+          <p>Anime</p>
         </button>
         <button className={styles.cat}>
           <MdVideogameAsset />
-          Jogos
+          <p>Jogos</p>
         </button>
         <button className={styles.cat}>
           <SiRetroarch />
-          Pixel art
+          <p>Pixel art</p>
         </button>
       </div>
-      <PhotosGallery></PhotosGallery>
+      <PhotosGallery api={api}></PhotosGallery>
     </div>
   );
 }

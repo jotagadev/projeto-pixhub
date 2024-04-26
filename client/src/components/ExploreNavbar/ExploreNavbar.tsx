@@ -9,10 +9,13 @@ import { useRef, useState } from "react";
 import RegisterDialog from "../RegisterDialog/RegisterDialog";
 import { SlMagnifier } from "react-icons/sl";
 import { useParams, usePathname } from "next/navigation";
+import { IoIosArrowDown } from "react-icons/io";
 
 //TODO - GERENCIAMENTO DE ESTADO DE LOGGED IN
 
 export default function ExploreNavbar() {
+  const [avatarDrop, setAvatarDrop] = useState(false);
+  const [logged, setLogged] = useState(true);
   const [mobile, setMobile] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
   const [search, setSearch] = useState(""); // ESTADO DA PESQUISA - TODO
@@ -71,66 +74,141 @@ export default function ExploreNavbar() {
           >
             Página inicial
           </Link>
-          <Link
-            className={`${styles.navbtn} ${
-              criarAtivo && styles.navbtnselected
-            }`}
-            href="/explorar/criar"
-          >
-            Criar
-          </Link>
-        </div>
-        {!criarAtivo && <div className={styles.search}>
-          <input
-            placeholder="Pesquisar"
-            onChange={(e) => setSearch(e.target.value)}
-            className={styles.searchinput}
-          ></input>
-          <button className={styles.searchbtn}>
-            <SlMagnifier />
-          </button>
-        </div>}
-
-        <div className={styles.containerauth}>
-          <button
-            className={styles.loginbtn}
-            onClick={() => toggleDialog(true)}
-          >
-            Login
-          </button>
-          <button
-            className={styles.registerbtn}
-            onClick={() => toggleDialog(false)}
-          >
-            Registrar-se
-          </button>
-        </div>
-        <label className={styles.menu} onClick={onClick}>
-          {mobile ? <FaX></FaX> : <FaBars></FaBars>}
-        </label>
-        <div
-          className={
-            mobile ? `${styles.mobilenav} ${styles.show}` : styles.mobilenav
-          }
-        >
-          <Link className={styles.registerbtn} href="/">
-            Explorar
-          </Link>
-          <div className={styles.mobileauth}>
-            <button
-              className={styles.loginbtn}
-              onClick={() => toggleDialog(true)}
+          {logged && (
+            <Link
+              className={`${styles.navbtn} ${
+                criarAtivo && styles.navbtnselected
+              }`}
+              href="/explorar/criar"
             >
-              Login
-            </button>
-            <button
-              className={styles.registerbtn}
-              onClick={() => toggleDialog(false)}
-            >
-              Registrar-se
+              Criar
+            </Link>
+          )}
+        </div>
+        {explorarAtivo && (
+          <div className={styles.search}>
+            <input
+              placeholder="Pesquisar"
+              onChange={(e) => setSearch(e.target.value)}
+              className={styles.searchinput}
+            ></input>
+            <button className={styles.searchbtn}>
+              <SlMagnifier />
             </button>
           </div>
-        </div>
+        )}
+
+        <>
+          {!logged && (
+            <div className={styles.containerauth}>
+              <button
+                className={styles.loginbtn}
+                onClick={() => toggleDialog(true)}
+              >
+                Login
+              </button>
+              <button
+                className={styles.registerbtn}
+                onClick={() => toggleDialog(false)}
+              >
+                Registrar-se
+              </button>
+            </div>
+          )}
+
+          {
+            <label className={styles.menu} onClick={onClick}>
+              {mobile ? <FaX></FaX> : <FaBars></FaBars>}
+            </label>
+          }
+
+          <div
+            className={
+              mobile ? `${styles.mobilenav} ${styles.show}` : styles.mobilenav
+            }
+          >
+            {explorarAtivo && (
+              <div className={styles.searchmobile}>
+                <input
+                  placeholder="Pesquisar"
+                  onChange={(e) => setSearch(e.target.value)}
+                  className={styles.searchinput}
+                ></input>
+                <button className={styles.searchbtn}>
+                  <SlMagnifier />
+                </button>
+              </div>
+            )}
+
+            <div className={styles.mobilenavlinks}>
+              <Link
+                className={`${styles.navbtn} ${
+                  explorarAtivo && styles.navbtnselected
+                }`}
+                href="/explorar"
+              >
+                Página inicial
+              </Link>
+              {logged && (
+                <Link
+                  className={`${styles.navbtn} ${
+                    criarAtivo && styles.navbtnselected
+                  }`}
+                  href="/explorar/criar"
+                >
+                  Criar
+                </Link>
+              )}
+            </div>
+
+            {!logged && (
+              <div className={styles.mobileauth}>
+                <button
+                  className={styles.loginbtn}
+                  onClick={() => toggleDialog(true)}
+                >
+                  Login
+                </button>
+                <button
+                  className={styles.registerbtn}
+                  onClick={() => toggleDialog(false)}
+                >
+                  Registrar-se
+                </button>
+              </div>
+            )}
+          </div>
+        </>
+
+        {logged && (
+          <div className={styles.containerperfil}>
+            <div className={styles.perfil}>
+              <Link href="/explorar/perfil">
+                <img
+                  className={styles.avatarimg}
+                  src="/logo/logowhite.png"
+                ></img>
+              </Link>
+              <IoIosArrowDown
+                onClick={() => setAvatarDrop(!avatarDrop)}
+                className={`${styles.dropicon} ${
+                  avatarDrop && styles.dropiconshow
+                }`}
+              />
+            </div>
+            <div
+              className={`${styles.dropdowncontainer} ${
+                avatarDrop && styles.dropshow
+              }`}
+            >
+              <ul className={styles.dropdownmenu}>
+                <li>Exibir perfil</li>
+                <li>Configurações</li>
+                <li>Sair</li>
+              </ul>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

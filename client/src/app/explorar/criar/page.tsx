@@ -8,6 +8,7 @@ export default function Criar() {
         <button className={styles.publicarbtn}>Publicar</button>
       </div>
       <div className={styles.content}>
+      <button className={styles.mobilepublicarbtn}>Publicar</button>
         <div className={styles.imagem}>
           <label className={styles.selecionar} htmlFor="imagem">
             Selecionar imagem
