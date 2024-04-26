@@ -24,6 +24,7 @@ import { diskStorage } from 'multer';
 import { unlink } from 'fs/promises';
 import { AuthGuard } from 'src/common/guard/auth.guard';
 import { Category } from 'src/common/enum/Category.enum';
+import { extname } from 'path';
 
 @Controller('api')
 export class PhotosController {
@@ -34,34 +35,49 @@ export class PhotosController {
     return await this.photosService.create(createPhotoDto);
   }
   SERVER_URL: string = 'http://localhost:3333/';
-  @Post('upload')
-  @UseGuards(AuthGuard)
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads',
-      }),
+  
+
+
+@Post('upload')
+@UseGuards(AuthGuard)
+@UseInterceptors(
+  FileInterceptor('file', {
+    storage: diskStorage({
+      destination: './uploads',
+      filename: (req, file, cb) => {
+        const randomName = Array(32)
+          .fill(null)
+          .map(() => Math.round(Math.random() * 16).toString(16))
+          .join('');
+        return cb(null, `${randomName}${extname(file.originalname)}`);
+      },
+    }),
+  }),
+)
+
+
+
+async upload(
+  @Body() createPhotoDto: CreatePhotoDto,
+  @Param('id') id: string,
+  @UploadedFile(
+    new ParseFilePipe({
+      // Valida que é uma imagem e limita o tamanho do arquivo.
+      validators: [
+        new MaxFileSizeValidator({ maxSize: 1000000000 }),
+      ],
     }),
   )
-  async upload(
-    @Param('id') id: string,
-    @UploadedFile(
-      new ParseFilePipe({
-        // Valida que é uma imagem e limita o tamanho do arquivo.
-        validators: [
-          new MaxFileSizeValidator({ maxSize: 1000000000 }),
-          new FileTypeValidator({ fileType: /\.(jpg|jpeg|png)$/ }),
-        ],
-      }),
-    )
-    file: Express.Multer.File,
-  ) {
-    console.log('Arquivo postado:', file);
-    return await this.photosService.setURL(
-      +id,
-      `${this.SERVER_URL}${file.path}`,
-    );
-  }
+  file: Express.Multer.File,
+) {
+  console.log('Arquivo postado:', file);
+  
+  return await this.photosService.setURL(
+    +id,
+    `${this.SERVER_URL}${file.filename}`, // Usando file.filename em vez de file.path
+  );
+}
+
 
   @Get('photos')
   async findAll() {

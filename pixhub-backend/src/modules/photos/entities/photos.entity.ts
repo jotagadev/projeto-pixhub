@@ -12,7 +12,7 @@ export class Photo {
   @Column({ type: 'datetime', name: 'date', nullable: false })
   postDate: Date;
 
-  @Column({ type: 'text', name: 'photoURL', nullable: false })
+  @Column({ type: 'text', name: 'photoURL', nullable: true })
   photoURL: string;
 
   @Column({ type: 'text', name: 'description', nullable: false })

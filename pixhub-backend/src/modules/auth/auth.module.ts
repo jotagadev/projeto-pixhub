@@ -9,12 +9,11 @@ import { AuthService } from './auth.service';
   imports: [
     JwtModule.registerAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        secret: configService.get('SECRET_KEY'),
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('SECRET_KEY'), // Use configService para obter a chave secreta
         signOptions: { expiresIn: '1d' },
       }),
-      global: true,
-      inject: [ConfigService],
+      inject: [ConfigService], // Injetar o ConfigService
     }),
     UserModule,
   ],

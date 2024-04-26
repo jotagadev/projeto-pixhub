@@ -17,7 +17,7 @@ import * as cors from 'cors';
     PhotosModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: './.env',
     }),
   ],
   controllers: [AppController],
