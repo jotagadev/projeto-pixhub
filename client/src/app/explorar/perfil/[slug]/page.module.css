@@ -19,10 +19,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30vw;
+    min-width: 30vw;
     gap: 5em;
     padding-bottom: 1em;
-    border-bottom: 1px solid aliceblue;
+    border-bottom: 1px solid #3e3e3e;
 }
 
 .nome{
@@ -48,4 +48,9 @@
 .configicon:hover{
     cursor: pointer;
     transform: scale(110%);
+}
+
+.active{
+    background-color: #7c2ae8;
+    color: aliceblue;
 }

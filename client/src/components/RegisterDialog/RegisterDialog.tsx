@@ -92,8 +92,8 @@ export default function RegisterDialog({ option, closeDialog } : Props)  {
         {
         login ? 
         <p className={styles.pergunta1}>
-          Você quer se registrar?{" "}
-          <span onClick={switchLogin} className={`${styles.span1} ${styles.switchlogin}`}>Clique aqui</span> para voltar
+          Você não tem uma conta?{" "}
+          <span onClick={switchLogin} className={`${styles.span1} ${styles.switchlogin}`}>Clique aqui</span> para se registrar
         </p> : 
         <p className={styles.pergunta1}>
           Você já possui uma conta?{" "}

@@ -183,10 +183,10 @@ export default function ExploreNavbar() {
         {logged && (
           <div className={styles.containerperfil}>
             <div className={styles.perfil}>
-              <Link href="/explorar/perfil">
+              <Link href="/explorar/perfil/1">
                 <img
                   className={styles.avatarimg}
-                  src="/logo/logowhite.png"
+                  src="/images/messi.jpeg"
                 ></img>
               </Link>
               <IoIosArrowDown
