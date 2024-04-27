@@ -21,10 +21,10 @@ import { CreatePhotoDto } from './dto/create-photo.dto';
 import { UpdatePhotoDto } from './dto/update-photo.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { unlink } from 'fs/promises';
 import { AuthGuard } from 'src/common/guard/auth.guard';
 import { Category } from 'src/common/enum/Category.enum';
 import { extname } from 'path';
+import { unlink } from 'fs';
 
 @Controller('api')
 export class PhotosController {
@@ -85,12 +85,17 @@ async upload(
     return await this.photosService.findCategory(category);
   }
 
+  @Get('photos/:userId')
+  async findByUser(@Param('userId') userId: string) {
+    return await this.photosService.findByUser(+userId);
+  }
+
   @Get('photo/:id')
   async findOne(@Param('id') id: string) {
     return await this.photosService.findOne(+id);
   }
 
-  @Get('upload')
+  /*@Get('upload')
   async serveAllUpload(@Res() res): Promise<any> {
     const photos = await this.photosService.findAll();
 
@@ -118,7 +123,7 @@ async upload(
     for (const photoPath of photoPaths) {
       res.sendFile(photoPath, { root: 'uploads' });
     }
-  }
+  }*/
 
   @Patch('photo/:id')
   @UseGuards(AuthGuard)
@@ -135,6 +140,17 @@ async upload(
     const photo = await this.photosService.findOne(+id);
     if (!photo) {
       throw new NotFoundException('Photo not found');
+    }
+    let path = photo.photoURL;
+    path = path.replace(this.SERVER_URL,"");
+    console.log(path);
+    try {
+      await unlink(path, (err) =>{
+        if(err) throw err;
+        console.log("arquivo deletado.");
+      });
+    } catch (error) {
+      throw new InternalServerErrorException('Failed to delete image file');
     }
     return await this.photosService.remove(+id);
   }
