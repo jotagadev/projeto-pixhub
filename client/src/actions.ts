@@ -1,6 +1,6 @@
 "use server";
 
-import { sessionOptions, SessionData, defaultSession } from "@/lib";
+import { sessionOptions, SessionData, defaultSession, userInfo } from "@/lib";
 import { getIronSession } from "iron-session";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
@@ -120,6 +120,7 @@ export const logout = async () => {
 };
 
 
+
 export const getUser = async (id: number) => {
    
 
@@ -139,6 +140,47 @@ fetch(`http://localhost:3333/api/user/${id}`)
   });
 
 };
+
+export const createPost = async (formData: FormData) => {
+  const session = await getSession();
+
+  const formTitulo = formData.get("titulo") as string;
+  const formDate = Date.now();
+  const formDesc = formData.get("description") as string;
+  const formCat = formData.get("categoria") as string;
+  const formFile = formData.get("file") as File;
+
+  const url = "http://localhost:3333/api/upload";
+  const dados = new FormData();
+  dados.append("file", formFile);
+  dados.append("title", formTitulo);
+  dados.append("postDate", formDate);
+  dados.append("description", formDesc);
+  dados.append("category", formCat);
+  dados.append("userId", session.userId);
+
+  try {
+    const resposta = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${session.accessToken}`
+      },
+      body: dados,
+    });
+
+    const responseData = await resposta.json();
+    console.log("Resposta da API:", responseData);
+
+    if (responseData.error) {
+      return { error: responseData.message };
+    }
+  } catch (erro) {
+    console.error("Erro ao fazer upload:", erro);
+  }
+};
+
+
+
 
 export const changePremium = async () => {
   const session = await getSession();

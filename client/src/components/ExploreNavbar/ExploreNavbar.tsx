@@ -21,7 +21,6 @@ export default function ExploreNavbar({session}: any) {
   const [loginOption, setLoginOption] = useState(false);
   const [search, setSearch] = useState(""); // ESTADO DA PESQUISA - TODO
   const dialogRef = useRef<HTMLDialogElement | null>(null);
-
   const pathname = usePathname();
   const explorarAtivo = pathname.endsWith("/explorar");
   const criarAtivo = pathname.endsWith("/criar");
@@ -42,6 +41,8 @@ export default function ExploreNavbar({session}: any) {
     }
 
     setLoginOption(option);
+
+    
 
     setTimeout(() => {
       if (dialogRef.current instanceof HTMLDialogElement) {
