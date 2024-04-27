@@ -7,7 +7,6 @@ import { BsEnvelopeFill } from "react-icons/bs";
 import { FaLock, FaUser } from "react-icons/fa";
 import { useFormState } from "react-dom";
 import { entrar, registrar } from "@/actions";
-import { useAuth } from "@/components/AuthProvider/AuthProvider";
 
 type Props = {
   option: boolean;
@@ -15,37 +14,18 @@ type Props = {
 };
 
 export default function RegisterDialog({ option, closeDialog }: Props) {
-  const session = useAuth();
-
   const [login, setLogin] = useState(option);
 
-  let action;
-
+  useEffect(() => {
+    setLogin(option)
+  }, [option]);
   
-  if (login) {
-    action = entrar;
-  } else {
-    action = registrar;
-  }
 
-
-
-  const [state, formAction] = useFormState<any, FormData>(action, undefined);
+  const [state, formAction] = useFormState<any, FormData>(login ? entrar : registrar, undefined);
 
   const switchLogin = () => {
     setLogin((prev) => !prev);
   };
-
-  useEffect(() => {
-    setLogin(option);
-
-    if (login) {
-      action = entrar;
-    } else {
-      action = registrar;
-    }
-  
-  }, [option]);
 
   return (
     <div className={styles.container}>

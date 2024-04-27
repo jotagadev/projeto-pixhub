@@ -8,6 +8,11 @@ export interface SessionData {
   isLoggedIn:boolean;
 }
 
+export type userInfo = {
+  userId : string;
+  accessToken: string;
+}
+
 export const defaultSession:SessionData = {
   isLoggedIn:false,
 }
