@@ -1,18 +1,19 @@
 .container{
-     padding-top: 10em;
-    width: 80vw;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    padding-top: 10em;
+    width: 70vw;
+    margin: 20px auto;
+    columns: 4;
+    column-gap: 10px;
 }
 
 .img{
     max-width: 30em;
     height: auto;
     border-radius: 20px;
-    cursor: pointer
+    cursor: pointer;
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 20px;
 }
 
 .img:hover{
