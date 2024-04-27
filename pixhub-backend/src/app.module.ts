@@ -8,6 +8,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { PhotosModule } from './modules/photos/photos.module';
 import { ConfigModule } from '@nestjs/config';
 import * as cors from 'cors';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -18,6 +20,10 @@ import * as cors from 'cors';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './.env',
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: 'uploads',
+      serveRoot: '/uploads',
     }),
   ],
   controllers: [AppController],

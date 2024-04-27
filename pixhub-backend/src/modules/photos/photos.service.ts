@@ -29,6 +29,10 @@ export class PhotosService {
     return await this.photoRepository.find({ where: { category } });
   }
 
+  async findByUser(userId: number) {
+    return await this.photoRepository.find({ where: { userId } });
+  }
+
   async findOne(id: number) {
     try {
       return await this.photoRepository.findOneByOrFail({ id });
