@@ -81,4 +81,9 @@ export class UserService {
       throw new BadRequestException('Email já existe.');
     }
   }
+
+  async setAvatarURL(id: number, url: string) {
+    return await this.userRepository.update(id,{ avatarURL: url })
+  }
+
 }
