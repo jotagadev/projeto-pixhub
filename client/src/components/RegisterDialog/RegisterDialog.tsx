@@ -21,11 +21,13 @@ export default function RegisterDialog({ option, closeDialog }: Props) {
 
   let action;
 
+  
   if (login) {
     action = entrar;
   } else {
     action = registrar;
   }
+
 
 
   const [state, formAction] = useFormState<any, FormData>(action, undefined);
@@ -37,8 +39,12 @@ export default function RegisterDialog({ option, closeDialog }: Props) {
   useEffect(() => {
     setLogin(option);
 
-   
-
+    if (login) {
+      action = entrar;
+    } else {
+      action = registrar;
+    }
+  
   }, [option]);
 
   return (

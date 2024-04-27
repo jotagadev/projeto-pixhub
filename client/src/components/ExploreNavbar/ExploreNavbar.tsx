@@ -197,7 +197,7 @@ export default function ExploreNavbar({session}: any) {
               <Link href={`/explorar/perfil/${session.userId}`}>
                 <img
                   className={styles.avatarimg}
-                  src="/images/messi.jpeg"
+                  src="/images/defaultavatar.png"
                 ></img>
               </Link>
               <IoIosArrowDown
@@ -213,9 +213,9 @@ export default function ExploreNavbar({session}: any) {
               }`}
             >
               <ul className={styles.dropdownmenu}>
-                <li>Exibir perfil</li>
-                <li>Configurações</li>
-                <li onClick={onLogout}>Sair</li>
+                <li><Link className={styles.link} href={`/explorar/perfil/${session.userId}?q=galeria`}>Exibir perfil</Link></li>
+                <li><Link className={styles.link} href={`/explorar/perfil/${session.userId}?q=config`}>Configurações</Link></li>
+                <li className={styles.link} onClick={onLogout}>Sair</li>
               </ul>
             </div>
           </div>

@@ -29,7 +29,6 @@ export class UserController {
   }
 
   @Get('user/:id')
-  @UseGuards(AuthGuard)
   async findOne(@Param('id', ParseIntPipe) id: number) {
     return await this.userService.findOne(+id);
   }

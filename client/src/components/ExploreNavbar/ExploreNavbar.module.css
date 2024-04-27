@@ -265,7 +265,7 @@
     
  }
 
- .dropdownmenu li:hover{
+ .dropdownmenu .link:hover{
     color:#7c2ae8;
     cursor: pointer;
  }

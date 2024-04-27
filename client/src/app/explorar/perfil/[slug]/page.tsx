@@ -1,10 +1,11 @@
 
-import { getSessionInfo } from "@/actions";
+import { getSessionInfo, getUser } from "@/actions";
 import Profile from "@/components/Profile/Profile";
 
 export default async function Perfil() {
  
   const session = await getSessionInfo()
+  
 
   return (
     <>

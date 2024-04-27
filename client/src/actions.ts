@@ -119,6 +119,27 @@ export const logout = async () => {
   redirect("/");
 };
 
+
+export const getUser = async (id: number) => {
+   
+
+fetch(`http://localhost:3333/api/user/${id}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('A resposta da rede não foi bem-sucedida');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Dados do usuário:', data);
+    
+  })
+  .catch(error => {
+    console.error('Houve um problema com a operação de requisição:', error);
+  });
+
+};
+
 export const changePremium = async () => {
   const session = await getSession();
 
