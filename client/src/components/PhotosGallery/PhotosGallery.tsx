@@ -34,7 +34,6 @@ export default function PhotosGallery({api} : Props) {
     getPosts();
   }, []);
 
-  console.log(photos);
 
   return (
     <div className={styles.container}>

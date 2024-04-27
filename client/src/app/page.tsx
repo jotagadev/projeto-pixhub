@@ -6,8 +6,17 @@ import HomeSlider from "@/components/HomeSlider/HomeSlider";
 import { FaArrowDown } from "react-icons/fa";
 import Image from "next/image";
 import HomeFooter from "@/components/HomeFooter/HomeFooter";
+import { getSession } from "@/actions";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getSession();
+  
+  if(session.isLoggedIn){
+    redirect("/explorar")
+  }
+
+
   return (
     <>
       <HomeNavbar></HomeNavbar>

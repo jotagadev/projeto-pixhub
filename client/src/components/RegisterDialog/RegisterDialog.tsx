@@ -1,105 +1,134 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import RegisterLogo from "../Logo/RegisterLogo";
 import styles from "./registerdialog.module.css";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaLock, FaUser } from "react-icons/fa";
-
+import { useFormState } from "react-dom";
+import { entrar, registrar } from "@/actions";
+import { useAuth } from "@/components/AuthProvider/AuthProvider";
 
 type Props = {
-    option : boolean;
-    closeDialog : () => void;
-}
+  option: boolean;
+  closeDialog: () => void;
+};
 
-export default function RegisterDialog({ option, closeDialog } : Props)  {
-    const [inputs, setInputs] = useState({
-        email: "",
-        usuario: "",
-        senha: "",
-    });
+export default function RegisterDialog({ option, closeDialog }: Props) {
+  const session = useAuth();
 
-    const [login, setLogin] = useState(option);
+  const [login, setLogin] = useState(option);
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setInputs(prev => ({
-            ...prev,
-            [name]: value,
-        }));
-    }
+  let action;
 
-    const onClick = () => {
-        console.log(inputs)
-    }
+  if (login) {
+    action = entrar;
+  } else {
+    action = registrar;
+  }
 
-    const switchLogin = () => {
-        setLogin((prev) => !prev);
-    }
 
-    useEffect(() => {
-      setLogin(option)
-    }, [option]);
-    
+  const [state, formAction] = useFormState<any, FormData>(action, undefined);
+
+  const switchLogin = () => {
+    setLogin((prev) => !prev);
+  };
+
+  useEffect(() => {
+    setLogin(option);
+
+   
+
+  }, [option]);
 
   return (
     <div className={styles.container}>
       <RegisterLogo></RegisterLogo>
-      <button onClick={closeDialog} className={styles.closebtn}>x</button>
+      <button onClick={closeDialog} className={styles.closebtn}>
+        x
+      </button>
 
       <div className={styles.conteudo}>
         <div className={styles.slogan}>
-        {
-  login ? (
-    <>
-      <h4 className={styles.titulo}>
-        Seja <span className={styles.span1}>bem vindo</span> de volta!
-      </h4>
-      <p className={styles.subtitulo}>É bom ter você de novo.</p>
-    </>
-  ) : (
-    <>
-      <h4 className={styles.titulo}>
-        Seja <span className={styles.span1}>bem vindo!</span>
-      </h4>
-      <p className={styles.subtitulo}>Entre num mundo de possibilidades</p>
-    </>
-  )
-}
+          {login ? (
+            <>
+              <h4 className={styles.titulo}>
+                Seja <span className={styles.span1}>bem vindo</span> de volta!
+              </h4>
+              <p className={styles.subtitulo}>É bom ter você de novo.</p>
+            </>
+          ) : (
+            <>
+              <h4 className={styles.titulo}>
+                Seja <span className={styles.span1}>bem vindo!</span>
+              </h4>
+              <p className={styles.subtitulo}>
+                Entre num mundo de possibilidades
+              </p>
+            </>
+          )}
         </div>
-        <div className={styles.inputs}>
-           {!login && (<div className={styles.inputbox}>
-            <BsEnvelopeFill className={styles.inputicon}></BsEnvelopeFill>
-            <input onChange={onChange} name="email" className={styles.input} placeholder="Email"></input>
-          </div>)}
+        <form className={styles.inputs} action={formAction}>
           <div className={styles.inputbox}>
-            <FaUser className={styles.inputicon}></FaUser>
-            <input onChange={onChange} name="usuario" className={styles.input} placeholder="Nome de usuário"></input>
+            <BsEnvelopeFill className={styles.inputicon}></BsEnvelopeFill>
+            <input
+              name="email"
+              className={styles.input}
+              placeholder="Email"
+            ></input>
           </div>
+
+          {!login && (
+            <div className={styles.inputbox}>
+              <FaUser className={styles.inputicon}></FaUser>
+              <input
+                name="nome"
+                className={styles.input}
+                placeholder="Nome de usuário"
+                type="text"
+              ></input>
+            </div>
+          )}
           <div className={styles.inputbox}>
             <FaLock className={styles.inputicon}></FaLock>
             <input
-            onChange={onChange}
-            name="senha"
-            className={styles.input}
-            placeholder={login ? "Sua senha " : "Crie uma senha"}
+              name="senha"
+              className={styles.input}
+              placeholder={login ? "Sua senha " : "Crie uma senha"}
+              type="password"
             ></input>
           </div>
-          <button onClick={onClick} className={styles.botao1}>{login ? "Entrar" : "Inscrever-se"}</button>
-        </div>
+          <button className={styles.botao1}>
+            {login ? "Entrar" : "Inscrever-se"}
+          </button>
+          {state?.error && <p className={styles.erro}>{state.error}</p>}
+        </form>
       </div>
+
       <div className={styles.perguntas}>
-        {
-        login ? 
-        <p className={styles.pergunta1}>
-          Você não tem uma conta?{" "}
-          <span onClick={switchLogin} className={`${styles.span1} ${styles.switchlogin}`}>Clique aqui</span> para se registrar
-        </p> : 
-        <p className={styles.pergunta1}>
-          Você já possui uma conta?{" "}
-          <span onClick={switchLogin} className={`${styles.span1} ${styles.switchlogin}`}>Clique aqui</span> para entrar
-        </p>
-        }
+        {login ? (
+          <p className={styles.pergunta1}>
+            Você não tem uma conta?{" "}
+            <span
+              onClick={switchLogin}
+              className={`${styles.span1} ${styles.switchlogin}`}
+            >
+              Clique aqui
+            </span>{" "}
+            para se registrar
+          </p>
+        ) : (
+          <p className={styles.pergunta1}>
+            Você já possui uma conta?{" "}
+            <span
+              onClick={switchLogin}
+              className={`${styles.span1} ${styles.switchlogin}`}
+            >
+              Clique aqui
+            </span>{" "}
+            para entrar
+          </p>
+        )}
       </div>
     </div>
   );

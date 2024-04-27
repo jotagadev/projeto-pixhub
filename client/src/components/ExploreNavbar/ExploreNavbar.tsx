@@ -5,17 +5,18 @@ import Logo from "../Logo/Logo";
 import styles from "./ExploreNavbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RegisterDialog from "../RegisterDialog/RegisterDialog";
 import { SlMagnifier } from "react-icons/sl";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
+import { logout } from "@/actions";
 
 //TODO - GERENCIAMENTO DE ESTADO DE LOGGED IN
 
-export default function ExploreNavbar() {
+export default function ExploreNavbar({session}: any) {
   const [avatarDrop, setAvatarDrop] = useState(false);
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
   const [search, setSearch] = useState(""); // ESTADO DA PESQUISA - TODO
@@ -24,6 +25,12 @@ export default function ExploreNavbar() {
   const pathname = usePathname();
   const explorarAtivo = pathname.endsWith("/explorar");
   const criarAtivo = pathname.endsWith("/criar");
+  
+
+  const onLogout = async () => {
+    console.log("afosedsaedr")
+    await logout();
+  }
 
   const onClick = () => {
     setMobile((prev) => !prev);
@@ -53,14 +60,18 @@ export default function ExploreNavbar() {
     }
   };
 
+  useEffect(() => {
+    setLogged(session.isLoggedIn)
+  },[session])
+
   return (
     <>
-      <dialog className={styles.dialog} ref={dialogRef}>
+      {!session.isLoggedIn && <dialog className={styles.dialog} ref={dialogRef}>
         <RegisterDialog
           option={loginOption}
           closeDialog={closeDialog}
         ></RegisterDialog>
-      </dialog>
+      </dialog>}
       <header className={styles.container}>
         <div className={styles.logoelinks}>
           <Link href="/explorar">
@@ -183,7 +194,7 @@ export default function ExploreNavbar() {
         {logged && (
           <div className={styles.containerperfil}>
             <div className={styles.perfil}>
-              <Link href="/explorar/perfil/1">
+              <Link href={`/explorar/perfil/${session.userId}`}>
                 <img
                   className={styles.avatarimg}
                   src="/images/messi.jpeg"
@@ -204,7 +215,7 @@ export default function ExploreNavbar() {
               <ul className={styles.dropdownmenu}>
                 <li>Exibir perfil</li>
                 <li>Configurações</li>
-                <li>Sair</li>
+                <li onClick={onLogout}>Sair</li>
               </ul>
             </div>
           </div>
@@ -213,3 +224,7 @@ export default function ExploreNavbar() {
     </>
   );
 }
+function fetchSession() {
+  throw new Error("Function not implemented.");
+}
+

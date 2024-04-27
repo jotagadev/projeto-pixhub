@@ -5,8 +5,11 @@ import { FaSun } from "react-icons/fa6";
 import { MdVideogameAsset } from "react-icons/md";
 import { PiSwordDuotone } from "react-icons/pi";
 import { SiRetroarch } from "react-icons/si";
+import { getSessionInfo } from "@/actions";
 
-export default function Explorar() {
+export default async function Explorar() {
+
+  const session = getSessionInfo();
 
   const api = "https://jsonplaceholder.typicode.com/photos"
 

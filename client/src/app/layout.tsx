@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 
 import "./globals.css";
 
+
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={quicksand.className}>{children}</body>
-    </html>
+    
+      <html lang="pt-BR">
+        <body className={quicksand.className}>{children}</body>
+      </html>
+    
   );
 }
