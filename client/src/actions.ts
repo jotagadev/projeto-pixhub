@@ -163,7 +163,7 @@ export const createPost = async (formData: FormData) => {
     const resposta = await fetch(url, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${session.accessToken}`
+        "authorization": `Bearer ${session.accessToken}`
       },
       body: dados,
     });

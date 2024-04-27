@@ -72,6 +72,7 @@
     background-color: aliceblue;;
     margin-top: 20em;
     transition: 0.3s;
+    align-self: flex-start;
 }
 
 .explorarbtn:hover{
