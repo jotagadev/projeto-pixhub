@@ -59,7 +59,6 @@ export class PhotosController {
 
 async upload(
   @Body() createPhotoDto: CreatePhotoDto,
-  @Param('id') id: string,
   @UploadedFile(
     new ParseFilePipe({
       // Valida que é uma imagem e limita o tamanho do arquivo.
@@ -71,11 +70,8 @@ async upload(
   file: Express.Multer.File,
 ) {
   console.log('Arquivo postado:', file);
-  
-  return await this.photosService.setURL(
-    +id,
-    `${this.SERVER_URL}${file.filename}`, // Usando file.filename em vez de file.path
-  );
+  createPhotoDto.photoURL = `${this.SERVER_URL}${file.path}`;
+  return await this.photosService.create(createPhotoDto);
 }
 
 
@@ -140,14 +136,6 @@ async upload(
     if (!photo) {
       throw new NotFoundException('Photo not found');
     }
-
-    // Deleta a imagem de /uploads
-    try {
-      await unlink(photo.photoURL);
-    } catch (error) {
-      throw new InternalServerErrorException('Erro à deletar imagem');
-    }
-
     return await this.photosService.remove(+id);
   }
 }

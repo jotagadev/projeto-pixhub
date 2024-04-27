@@ -10,8 +10,10 @@ export class CreatePhotoDto {
   @IsNotEmpty({ message: 'Data é obrigatório.' })
   postDate: Date;
 
-  @IsString({ message: 'Descrição deve ser uma string.' })
+  @IsNotEmpty({ message: 'Data é obrigatório.' })
   description: string;
+
+  photoURL: string;
 
   @IsString({ message: 'Categoria deve ser uma string.' })
   @IsNotEmpty({ message: 'Categoria é obrigatório.' })

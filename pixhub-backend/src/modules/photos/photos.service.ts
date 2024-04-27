@@ -37,11 +37,6 @@ export class PhotosService {
     }
   }
 
-  async setURL(id: number, url: string) {
-    await this.findOne(id);
-    return await this.photoRepository.update(id, { photoURL: url });
-  }
-
   async update(id: number, updatePhotoDto: UpdatePhotoDto) {
     await this.findOne(id);
 
