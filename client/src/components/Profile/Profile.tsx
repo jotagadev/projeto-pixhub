@@ -8,6 +8,9 @@ import { IoMdPhotos } from "react-icons/io";
 import styles from "./profile.module.css";
 import PhotosGallery from "../PhotosGallery/PhotosGallery";
 import Image from "next/image";
+import Config from "../Config/Config";
+import { SessionData } from "@/lib";
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 type Profile = {
     "id": number,
@@ -15,14 +18,19 @@ type Profile = {
     "email" : string,
 }
 
-export default function Profile({session} : any) {
+export default function Profile({session}) {
 
   const searchParams = useSearchParams();
   const params = useParams();
   const query = searchParams.get("q");
   const [profile, setProfile] = useState<Profile>({});
+  const sessao = useAuth();
 
   if (query != "galeria" && query != "config") {
+    redirect(`/explorar/perfil/${params.slug}?q=galeria`);
+  }
+
+  if (query == "config" && sessao.userId != params.slug) {
     redirect(`/explorar/perfil/${params.slug}?q=galeria`);
   }
 
@@ -72,19 +80,19 @@ export default function Profile({session} : any) {
               }`}
             />
           </Link>
-          <Link href="?q=config">
+          {sessao.userId == params.slug && <Link href="?q=config">
             <FaGear
               className={`${styles.configicon} ${
                 query == "config" && styles.active
               }`}
             />
-          </Link>
+          </Link>}
         </div>
       </div>
       {query == "galeria" && (
-        <PhotosGallery api="https://jsonplaceholder.typicode.com/photos?albumId=1"></PhotosGallery>
+        <PhotosGallery api={`http://localhost:3333/api/photo/userPhotos/${params.slug}`}></PhotosGallery>
       )}
-      {query == "config"}
+      {query == "config" && <Config></Config>}
     </div>
   );
 }

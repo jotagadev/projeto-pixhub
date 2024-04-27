@@ -1,0 +1,80 @@
+.container{
+    display: flex;
+    justify-content: center;
+    
+    min-height: 93vh;
+    padding: 15em 5em;
+    gap: 5em;
+}
+
+.img{
+    width: 100em;
+    height:fit-content;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    
+}
+
+.autor{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.autorimg{
+    width: 20px;
+   
+}
+
+.autornome {
+    font-size: 1.6em;
+    color: white;
+}
+
+.titulodiv{
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0;
+}
+
+.titulo{
+    
+    font-size: 3.6em;
+    color: aliceblue;
+    max-width: 7em;
+}
+
+.cat{
+    font-size: 1.2em;
+    color: lightgrey;
+}
+
+.desc{
+    margin-top: 2em;
+    font-size: 1.6em;
+    color: lightgrey;
+}
+
+.explorarbtn{
+    font-family: inherit;
+    padding: 15px;
+    color: #242424;
+    border-radius: 20px;
+    border: unset;
+    font-weight: 900;
+    font-size: 1.6em;
+    background-color: aliceblue;;
+    margin-top: 20em;
+    transition: 0.3s;
+}
+
+.explorarbtn:hover{
+    transform: scale(110%);
+    cursor: pointer;
+}

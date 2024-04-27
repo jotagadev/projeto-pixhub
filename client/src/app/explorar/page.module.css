@@ -51,6 +51,38 @@
     cursor: pointer;
 }
 
+.filter{
+    font-size: 1.8em;
+    color: aliceblue;
+    
+    padding: 1em;
+    border-left: 1px solid #7c2ae8;
+}
+
+.filterdestaque{
+    color: #7c2ae8;
+    font-weight: 900;
+}
+
+.filterdiv{
+    display: flex;
+    align-items: center;
+    margin-right: 50em;
+}
+
+.closefilter{
+    font-size: 2.4em;
+    color: aliceblue;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+.closefilter:hover{
+    background-color: #2e2e2e;
+    
+}
+
 @media screen and (max-width: 1000px) {
     .container{
         font-size: 8px;

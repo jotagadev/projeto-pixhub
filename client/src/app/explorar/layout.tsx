@@ -29,7 +29,7 @@ export default async function RootLayout({
   
         {children}
       
-      <HomeFooter></HomeFooter>
+      <footer></footer>
       </AuthProvider>
     </>
   );

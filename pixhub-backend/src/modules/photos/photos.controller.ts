@@ -85,7 +85,7 @@ async upload(
     return await this.photosService.findCategory(category);
   }
 
-  @Get('photos/:userId')
+  @Get('photo/userPhotos/:userId')
   async findByUser(@Param('userId') userId: string) {
     return await this.photosService.findByUser(+userId);
   }

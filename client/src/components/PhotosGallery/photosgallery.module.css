@@ -12,6 +12,7 @@
     max-width: 30em;
     height: auto;
     border-radius: 20px;
+    cursor: pointer
 }
 
 @media screen and (max-width: 1200px) {

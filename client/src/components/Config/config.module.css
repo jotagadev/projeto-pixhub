@@ -1,0 +1,50 @@
+
+.container{
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60em
+}
+
+.titulo{
+    font-size: 3.2em;
+    color: rgb(175, 176, 177);
+    padding: 0.5em;
+    border-bottom: 1px solid #3e3e3e;
+}
+
+.inputbox{
+    display: flex;
+    padding: 1em;
+    gap: 2em;
+}
+
+.input{
+    border: unset;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3e3e3e;
+    font-size: 1.4em;
+    color: aliceblue;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.inputbtn{
+    font-family: inherit;
+    padding: 10px;
+    color: #242424;
+    border-radius: 20px;
+    border: unset;
+    font-weight: 900;
+    font-size: 1.6em;
+    background-color: aliceblue;;
+    transition: 0.3s;
+}
+
+.inputbtn:hover{
+    transform: scale(105%);
+    cursor: pointer;
+}

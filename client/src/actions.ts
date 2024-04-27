@@ -177,28 +177,38 @@ export const createPost = async (formData: FormData) => {
   } catch (erro) {
     console.error("Erro ao fazer upload:", erro);
   }
+
+  redirect("/explorar");
 };
 
-
-
-
-export const changePremium = async () => {
-  const session = await getSession();
-
-  isPro = !session.isPro;
-  session.isPro = isPro;
-  await session.save();
-  revalidatePath("/profile");
-};
 
 export const changeUsername = async (formData: FormData) => {
   const session = await getSession();
 
   const newUsername = formData.get("username") as string;
 
-  username = newUsername;
+  const userId = session.userId; // Obtenha o userId da sessão
 
-  session.username = username;
-  await session.save();
-  revalidatePath("/profile");
+  const url = `http://localhost:3333/api/user/${userId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${session.accessToken}`,
+      },
+      body: JSON.stringify({ name: newUsername }), // Apenas o novo nome de usuário é enviado no corpo da solicitação
+    });
+
+    if (!response.ok) {
+      throw new Error("Falha ao atualizar o usuário.");
+    }
+
+    await session.save();
+    revalidatePath(`/profile`);
+  } catch (error) {
+    console.error("Erro ao atualizar o usuário:", error);
+    throw error;
+  }
 };
+
