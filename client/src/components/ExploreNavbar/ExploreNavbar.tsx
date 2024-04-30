@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { logout } from "@/actions";
 
-//TODO - GERENCIAMENTO DE ESTADO DE LOGGED IN
 
 export default function ExploreNavbar({session}: any) {
   const [avatarDrop, setAvatarDrop] = useState(false);
@@ -27,7 +26,6 @@ export default function ExploreNavbar({session}: any) {
   
 
   const onLogout = async () => {
-    console.log("afosedsaedr")
     await logout();
   }
 

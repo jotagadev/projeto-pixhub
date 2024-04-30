@@ -19,7 +19,6 @@ export default async function RootLayout({
 
 {
   const session = await getSessionInfo();
-  console.log(session.isLoggedIn)
 
   return (
     <>

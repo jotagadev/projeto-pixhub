@@ -9,8 +9,6 @@ import styles from "./profile.module.css";
 import PhotosGallery from "../PhotosGallery/PhotosGallery";
 import Image from "next/image";
 import Config from "../Config/Config";
-import { SessionData } from "@/lib";
-import { useAuth } from "../AuthProvider/AuthProvider";
 
 type Profile = {
     "id": number,
@@ -18,19 +16,19 @@ type Profile = {
     "email" : string,
 }
 
-export default function Profile({session}) {
+
+export default function Profile({session} : any) {
 
   const searchParams = useSearchParams();
   const params = useParams();
   const query = searchParams.get("q");
-  const [profile, setProfile] = useState<Profile>({});
-  const sessao = useAuth();
+  const [profile, setProfile] = useState<Profile>();
 
   if (query != "galeria" && query != "config") {
     redirect(`/explorar/perfil/${params.slug}?q=galeria`);
   }
 
-  if (query == "config" && sessao.userId != params.slug) {
+  if (query == "config" && session.userId != params.slug) {
     redirect(`/explorar/perfil/${params.slug}?q=galeria`);
   }
 
@@ -54,8 +52,8 @@ export default function Profile({session}) {
       getProfile();
     }, []);
 
-    console.log(profile);
-    if (!profile.id){
+    
+    if (!profile?.id){
         return (
             <div className={styles.containererro}>
                 <h1 className={styles.pagelosth1}>Este perfil não existe</h1>
@@ -80,7 +78,7 @@ export default function Profile({session}) {
               }`}
             />
           </Link>
-          {sessao.userId == params.slug && <Link href="?q=config">
+          {session.userId == params.slug && <Link href="?q=config">
             <FaGear
               className={`${styles.configicon} ${
                 query == "config" && styles.active
@@ -90,7 +88,7 @@ export default function Profile({session}) {
         </div>
       </div>
       {query == "galeria" && (
-        <PhotosGallery api={`http://localhost:3333/api/photo/userPhotos/${params.slug}`}></PhotosGallery>
+        <PhotosGallery query={query} api={`http://localhost:3333/api/photo/userPhotos/${params.slug}`}></PhotosGallery>
       )}
       {query == "config" && <Config></Config>}
     </div>

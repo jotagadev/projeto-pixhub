@@ -13,7 +13,6 @@ import { useSearchParams } from "next/navigation";
 export default function Explorar() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
-  console.log(query);
 
   const api = query
     ? `http://localhost:3333/api/photos/${query}`

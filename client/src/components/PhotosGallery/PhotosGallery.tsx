@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import styles from "./photosgallery.module.css";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 
 type Photo = {
@@ -13,7 +12,7 @@ type Photo = {
 
 type Props = {
   api: string,
-  query: string,
+  query: string | null,
 }
 
 export default function PhotosGallery({api, query} : Props) {
@@ -27,7 +26,6 @@ export default function PhotosGallery({api, query} : Props) {
           throw new Error("Erro ao buscar os dados das fotos");
         }
         const json = await response.json();
-        console.log(json)
         setPhotos(json);
       } catch (error) {
         console.error("Erro ao buscar os dados das fotos:", error);

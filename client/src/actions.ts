@@ -144,8 +144,13 @@ fetch(`http://localhost:3333/api/user/${id}`)
 export const createPost = async (formData: FormData) => {
   const session = await getSession();
 
+  if (!session || !session.userId) {
+    console.error("Usuário não autenticado.");
+    return; 
+  }
+
   const formTitulo = formData.get("titulo") as string;
-  const formDate : Date = Date.now();
+  const formDate  = Date.now().toString();
   const formDesc = formData.get("description") as string;
   const formCat = formData.get("categoria") as string;
   const formFile = formData.get("file") as File;
