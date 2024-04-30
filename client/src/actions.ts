@@ -1,6 +1,6 @@
 "use server";
 
-import { sessionOptions, SessionData, defaultSession, userInfo } from "@/lib";
+import { sessionOptions, SessionData, defaultSession, userInfo, Photo } from "@/lib";
 import { getIronSession } from "iron-session";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
@@ -145,7 +145,7 @@ export const createPost = async (formData: FormData) => {
   const session = await getSession();
 
   const formTitulo = formData.get("titulo") as string;
-  const formDate = Date.now();
+  const formDate : Date = Date.now();
   const formDesc = formData.get("description") as string;
   const formCat = formData.get("categoria") as string;
   const formFile = formData.get("file") as File;
@@ -211,4 +211,57 @@ export const changeUsername = async (formData: FormData) => {
     throw error;
   }
 };
+
+export const deletePhoto = async (photoId: string) => {
+  const session = await getSession()
+  const url = `http://localhost:3333/api/photo/${photoId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${session.accessToken}`, // Adicione os cabeçalhos de autorização conforme necessário
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Falha ao excluir a foto.");
+    }
+
+    console.log("Foto excluída com sucesso.");
+    // Retorne alguma coisa se desejar, como uma confirmação de exclusão
+  } catch (error) {
+    console.error("Erro ao excluir a foto:", error);
+    throw error;
+  }
+};
+
+export const getProfileFromPhoto = async (photo : Photo) => {
+  try {
+    const response = await fetch(`http://localhost:3333/api/user/${photo?.userId}`);
+    if (!response.ok) {
+      throw new Error("Erro ao buscar os dados do usuario");
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error("Erro ao buscar os dados do usuario", error);
+  }
+
+  
+};
+
+export const getPhoto = async (photoId : number) => {
+  try {
+    const response = await fetch(`http://localhost:3333/api/photo/${photoId}`);
+    if (!response.ok) {
+      throw new Error("Erro ao buscar os dados das fotos");
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error("Erro ao buscar os dados das fotos:", error);
+  }
+};
+
 

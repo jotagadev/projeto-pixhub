@@ -13,6 +13,22 @@ export type userInfo = {
   accessToken: string;
 }
 
+export type Photo = {
+  photoURL: string;
+  id: string;
+  title: string;
+  description: string;
+  userId: string;
+  category: string;
+};
+
+export type Profile = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+
 export const defaultSession:SessionData = {
   isLoggedIn:false,
 }
