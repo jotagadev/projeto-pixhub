@@ -87,6 +87,10 @@
     .container{
         font-size: 8px;
     }
+
+    .filterdiv{
+        margin-right: 15em;
+    }
 }
 
 @media screen and (max-width: 600px) {

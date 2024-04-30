@@ -80,6 +80,27 @@
     cursor: pointer;
 }
 
+.tituloeremove{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.removebtn{
+    border: unset;
+    background-color: rgb(131, 24, 24);
+    color: aliceblue;
+    padding: 10px;
+    font-size: 1.8em;
+    border-radius: 20px;
+    padding: 15px 15px 10px 
+}
+
+.removebtn:hover{
+    background-color: rgb(168, 31, 31);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1200px) {
     .container{
         flex-direction: column;
