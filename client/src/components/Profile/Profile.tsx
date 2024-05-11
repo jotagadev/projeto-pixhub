@@ -17,12 +17,11 @@ type Profile = {
 }
 
 
-export default function Profile({session} : any) {
+export default function Profile({session, profile} : any) {
 
   const searchParams = useSearchParams();
   const params = useParams();
   const query = searchParams.get("q");
-  const [profile, setProfile] = useState<Profile>();
 
   if (query != "galeria" && query != "config") {
     redirect(`/explorar/perfil/${params.slug}?q=galeria`);
@@ -35,22 +34,22 @@ export default function Profile({session} : any) {
   
     
   
-    useEffect(() => {
-      const getProfile = async () => {
-        try {
-          const response = await fetch(`http://localhost:3333/api/user/${params.slug}`);
-          if (!response.ok) {
-            throw new Error("Erro ao buscar os dados das fotos");
-          }
-          const json = await response.json();
-          setProfile(json);
-        } catch (error) {
-          console.error("Erro ao buscar os dados das fotos:", error);
-        }
-      };
+    // useEffect(() => {
+    //   const getProfile = async () => {
+    //     try {
+    //       const response = await fetch(`http://localhost:3333/api/user/${params.slug}`);
+    //       if (!response.ok) {
+    //         throw new Error("Erro ao buscar os dados das fotos");
+    //       }
+    //       const json = await response.json();
+    //       setProfile(json);
+    //     } catch (error) {
+    //       console.error("Erro ao buscar os dados das fotos:", error);
+    //     }
+    //   };
   
-      getProfile();
-    }, []);
+    //   getProfile();
+    // }, []);
 
     
     if (!profile?.id){

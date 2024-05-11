@@ -15,7 +15,6 @@ import { logout } from "@/actions";
 
 export default function ExploreNavbar({session}: any) {
   const [avatarDrop, setAvatarDrop] = useState(false);
-  const [logged, setLogged] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
   const [search, setSearch] = useState(""); // ESTADO DA PESQUISA - TODO
@@ -59,10 +58,6 @@ export default function ExploreNavbar({session}: any) {
     }
   };
 
-  useEffect(() => {
-    setLogged(session.isLoggedIn)
-  },[session])
-
   return (
     <>
       {!session.isLoggedIn && <dialog className={styles.dialog} ref={dialogRef}>
@@ -84,7 +79,7 @@ export default function ExploreNavbar({session}: any) {
           >
             Página inicial
           </Link>
-          {logged && (
+          {session.isLoggedIn && (
             <Link
               className={`${styles.navbtn} ${
                 criarAtivo && styles.navbtnselected
@@ -109,7 +104,7 @@ export default function ExploreNavbar({session}: any) {
         )}
 
         <>
-          {!logged && (
+          {!session.isLoggedIn && (
             <div className={styles.containerauth}>
               <button
                 className={styles.loginbtn}
@@ -159,7 +154,7 @@ export default function ExploreNavbar({session}: any) {
               >
                 Página inicial
               </Link>
-              {logged && (
+              {session.isLoggedIn && (
                 <Link
                   className={`${styles.navbtn} ${
                     criarAtivo && styles.navbtnselected
@@ -171,7 +166,7 @@ export default function ExploreNavbar({session}: any) {
               )}
             </div>
 
-            {!logged && (
+            {!session.isLoggedIn && (
               <div className={styles.mobileauth}>
                 <button
                   className={styles.loginbtn}
@@ -190,7 +185,7 @@ export default function ExploreNavbar({session}: any) {
           </div>
         </>
 
-        {logged && (
+        {session.isLoggedIn && (
           <div className={styles.containerperfil}>
             <div className={styles.perfil}>
               <Link href={`/explorar/perfil/${session.userId}`}>
@@ -222,8 +217,5 @@ export default function ExploreNavbar({session}: any) {
       </header>
     </>
   );
-}
-function fetchSession() {
-  throw new Error("Function not implemented.");
 }
 

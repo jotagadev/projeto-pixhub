@@ -4,5 +4,5 @@ export enum Category {
     Urbano = 'Urbano',
     Anime = 'Anime',
     Jogos = 'Jogos',
-    PixelArt = 'Pixel art',
+    Pixelart = 'Pixelart',
 }

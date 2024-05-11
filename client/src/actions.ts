@@ -29,10 +29,7 @@ export const getSession = async () => {
   return session;
 };
 
-export const entrar = async (
-  prevState: { error: undefined | string },
-  formData: FormData
-) => {
+export const entrar = async (formData : FormData) => {
   const session = await getSession();
 
   const formEmail = formData.get("email") as string;
@@ -71,10 +68,7 @@ export const entrar = async (
   redirect("/explorar");
 };
 
-export const registrar = async (
-  prevState: { error: undefined | string },
-  formData: FormData
-) => {
+export const registrar = async (formData : FormData) => {
   const session = await getSession();
 
   const formEmail = formData.get("email") as string;
@@ -234,6 +228,7 @@ export const deletePhoto = async (photoId: string) => {
     }
 
     console.log("Foto excluída com sucesso.");
+    redirect("/explorar");
     // Retorne alguma coisa se desejar, como uma confirmação de exclusão
   } catch (error) {
     console.error("Erro ao excluir a foto:", error);

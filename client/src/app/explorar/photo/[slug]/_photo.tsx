@@ -11,7 +11,6 @@ export default function Photo({ session, photo, author } : any ) {
 
   const removePhoto = async () => {
     await deletePhoto(photo.id);
-    redirect("/explorar");
   }
 
   return (

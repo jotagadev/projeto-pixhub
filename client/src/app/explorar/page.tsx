@@ -43,7 +43,7 @@ export default function Explorar() {
           <MdVideogameAsset />
           <p>Jogos</p>
         </Link>
-        <Link href="?q=Pixel Art" className={styles.cat}>
+        <Link href="?q=Pixelart" className={styles.cat}>
           <SiRetroarch />
           <p>Pixel art</p>
         </Link>

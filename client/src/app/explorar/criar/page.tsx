@@ -21,7 +21,7 @@ export default function Criar() {
     }, 5000);
   }, [error])
 
-  console.log(inputs)
+ 
   const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
@@ -110,7 +110,7 @@ export default function Criar() {
               <option value="Urbano">Urbano</option>
               <option value="Anime">Anime</option>
               <option value="Jogos">Jogos</option>
-              <option value="Pixel art">Pixel art</option>
+              <option value="Pixelart">Pixel art</option>
             </select>
           </div>
           <p className={styles.erro}>{error}</p>

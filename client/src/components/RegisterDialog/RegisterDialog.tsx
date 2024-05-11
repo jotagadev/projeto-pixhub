@@ -5,7 +5,6 @@ import RegisterLogo from "../Logo/RegisterLogo";
 import styles from "./registerdialog.module.css";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaLock, FaUser } from "react-icons/fa";
-import { useFormState } from "react-dom";
 import { entrar, registrar } from "@/actions";
 
 type Props = {
@@ -15,17 +14,24 @@ type Props = {
 
 export default function RegisterDialog({ option, closeDialog }: Props) {
   const [login, setLogin] = useState(option);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setLogin(option)
   }, [option]);
   
 
-  const [state, formAction] = useFormState<any, FormData>(login ? entrar : registrar, undefined);
-
   const switchLogin = () => {
     setLogin((prev) => !prev);
   };
+
+  const clientAction : (formData : FormData) => void = async (formData : FormData) => {
+    const action = login ? entrar : registrar;
+    const result = await action(formData);
+    if (result.error) {
+      setError(result.error);
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -54,7 +60,7 @@ export default function RegisterDialog({ option, closeDialog }: Props) {
             </>
           )}
         </div>
-        <form className={styles.inputs} action={formAction}>
+        <form className={styles.inputs} action={clientAction}>
           <div className={styles.inputbox}>
             <BsEnvelopeFill className={styles.inputicon}></BsEnvelopeFill>
             <input
@@ -87,7 +93,7 @@ export default function RegisterDialog({ option, closeDialog }: Props) {
           <button className={styles.botao1}>
             {login ? "Entrar" : "Inscrever-se"}
           </button>
-          {state?.error && <p className={styles.erro}>{state.error}</p>}
+          {error && <p className={styles.erro}>{error}</p>} 
         </form>
       </div>
 
